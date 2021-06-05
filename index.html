@@ -29,6 +29,7 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet"> 
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -49,7 +50,7 @@
   <!-- ======= Header ======= -->
   <div class="row">
     <!-- <span id="logo">&lt;a_k&gt;</span> -->
-    <span id="logo">ADITYA</span>
+    <span id="logo">AK</span>
   </div>
   <header id="header" class="d-flex flex-column justify-content-center">
     <nav id="navbar" class="navbar nav-menu">
@@ -74,13 +75,13 @@
   <section id="intro" class="d-flex flex-column justify-content-center">
     <div class="container-fluid">
       <div id="txt_intro" class="row">
-        <div id="txt_intro_col1" class="col-md-9">
+        <div id="txt_intro_col1" class="col-md-12">
           <div class="row">
             <span>Hey there! My name is </span>
-            <span style="font-size: 5vw; font-weight: 900; font-style: italic;">Aditya Kadiwal</span>
+            <span id="my_name">Aditya Kadiwal</span>
           </div>
         </div>
-        <div id="txt_intro_col2" class="col-md-3">
+        <!-- <div id="txt_intro_col2" class="col-md-3">
           <div class="row" style="text-align: end;">
             <span style="font-size: 3vw;">Skills:</span>
             <span>Python</span>
@@ -91,25 +92,9 @@
             <span>OpenCV</span>
             <span>Tensorflow</span>
           </div>
-        </div>
+        </div> -->
       </div>
-      <pre id="typewriter" class="acode prettyprint">
-class <span class="clsname">DeveloperFound():</span>
-  def __init__(self):  
-    self.name = <span class="atv">"Aditya Kadiwal"</span>
-    self.skills = [<span class="atv">"Python"</span>, <span class="atv">"SQL"</span>, <span class="atv">"Pandas"</span>, 
-                   <span class="atv">"PySpark"</span>, <span class="atv">"Amazon Web Services"</span>,
-                   <span class="atv">"OpenCV"</span>, <span class="atv">"Tensorflow"</span>]
-    self.total_experience = {<span class="atv">"years"</span>: <span id="exp_year" class="atn"></span>, <span class="atv">"months"</span>: <span id="exp_mnt" class="atn"></span>} 
-    self.role = <span class="atv">"Senior Data Engineer"</span>
-    self.company = <span class="atv">"Blazeclan Technologies Pvt. Ltd."</span>
-    self.current_location = {<a href="https://www.google.com/maps/place/Pune,+Maharashtra" class="atv effect-shine" target="_blank">"lat" : "18.5204° N", "long" : "73.8567° E"</a>}
-    self.other_links = (<a href="http://linkedin.com/in/adityakk" class="atv effect-shine" target="_blank">"LinkedIn"</a>, <a href="https://stackoverflow.com/users/6573889/aditya" class="atv effect-shine" target="_blank">"StackOverflow"</a>, <a href="https://www.kaggle.com/adityakadiwal/" class="atv effect-shine" target="_blank">"Kaggle"</a>, 
-                        <a href="https://www.hackerrank.com/profile/adityakk" class="atv effect-shine" target="_blank">"HackerRank"</a>, <a href="https://github.com/adityakk29" class="atv effect-shine" target="_blank">"GitHub"</a>)
 
-new_dev = DeveloperFound()
-if hire == <span class="com">True</span>:
-  new_dev.send_mail_to(<span class="atv">"adityakk29@gmail.com"</span>) </pre>
     </div>
   </section><!-- End Hero -->
 
@@ -139,16 +124,23 @@ if hire == <span class="com">True</span>:
             </p>
             <div class="row">
 
-              <pre class="prettyprint" style="font-size: 1.3em;"> more_info = {
-    "birthday" : datetime(1993, 10, 29),
-    "age": 27, 
-    "degree" : ["Post-graduation", "Bachelor of Engineering"],
-    "open_to_work" : True,
-    "official_notice_period" : {
-                                 "num_days" : 90, 
-                                 "negotiable" : True
-                               }
- }</pre>
+<pre id="typewriter" class="acode prettyprint">
+  class <span class="clsname">DeveloperFound():</span>
+    def __init__(self):  
+      self.name = <span class="atv">"Aditya Kadiwal"</span>
+      self.skills = [<span class="atv">"Python"</span>, <span class="atv">"SQL"</span>, <span class="atv">"Pandas"</span>, 
+                      <span class="atv">"PySpark"</span>, <span class="atv">"Amazon Web Services"</span>,
+                      <span class="atv">"OpenCV"</span>, <span class="atv">"Tensorflow"</span>]
+      self.total_experience = {<span class="atv">"years"</span>: <span id="exp_year" class="atn"></span>, <span class="atv">"months"</span>: <span id="exp_mnt" class="atn"></span>} 
+      self.role = <span class="atv">"Senior Data Engineer"</span>
+      self.company = <span class="atv">"Blazeclan Technologies Pvt. Ltd."</span>
+      self.current_location = {<a href="https://www.google.com/maps/place/Pune,+Maharashtra" class="atv effect-shine" target="_blank">"lat" : "18.5204° N", "long" : "73.8567° E"</a>}
+      self.other_links = (<a href="http://linkedin.com/in/adityakk" class="atv effect-shine" target="_blank">"LinkedIn"</a>, <a href="https://stackoverflow.com/users/6573889/aditya" class="atv effect-shine" target="_blank">"StackOverflow"</a>, <a href="https://www.kaggle.com/adityakadiwal/" class="atv effect-shine" target="_blank">"Kaggle"</a>, 
+                          <a href="https://www.hackerrank.com/profile/adityakk" class="atv effect-shine" target="_blank">"HackerRank"</a>, <a href="https://github.com/adityakk29" class="atv effect-shine" target="_blank">"GitHub"</a>)
+  
+  new_dev = DeveloperFound()
+  if hire == <span class="com">True</span>:
+    new_dev.send_mail_to(<span class="atv">"adityakk29@gmail.com"</span>) </pre>
             </div>
             <p>
               Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et
@@ -764,107 +756,7 @@ if hire == <span class="com">True</span>:
   <!-- <div id="preloader"></div> -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
       class="fas fa-angle-double-up"></i></a>
-  <script>
-    function calculateAge(birthMonth, birthDay, birthYear) {
-      var currentDate = new Date();
-      var currentYear = currentDate.getFullYear();
-      var currentMonth = currentDate.getMonth();
-      var currentDay = currentDate.getDate();
-      var calculatedAge = currentYear - birthYear;
-      m = 0
-      if ((currentMonth - birthMonth) > 0) {
-        m = currentMonth - birthMonth;
-      }
-      else {
-        m = currentMonth + 12 - birthMonth;
-      }
-      console.log(m)
-      if (currentMonth < birthMonth - 1) {
-        calculatedAge--;
-      }
-      if (birthMonth - 1 == currentMonth && currentDay < birthDay) {
-        calculatedAge--;
-      }
-      $('#exp_year').html(calculatedAge);
-      $('#exp_mnt').html(m);
-      // $('#loc').attr("href", "https://goo.gl/maps/yXZUtG17VJxTHSYV9");
-      return calculatedAge;
-    }
 
-    var age = calculateAge(5, 31, 2016);
-
-    // https://css-tricks.com/snippets/css/typewriter-effect/
-    function setupTypewriter(t) {
-      var HTML = t.innerHTML;
-
-      t.innerHTML = "";
-
-      var cursorPosition = 0,
-        tag = "",
-        writingTag = false,
-        tagOpen = false,
-        typeSpeed = Math.random() * 15,
-        tempTypeSpeed = 0;
-
-      var type = function () {
-
-        if (writingTag === true) {
-          tag += HTML[cursorPosition];
-        }
-
-        if (HTML[cursorPosition] === "<") {
-          tempTypeSpeed = 0;
-          if (tagOpen) {
-            tagOpen = false;
-            writingTag = true;
-          } else {
-            tag = "";
-            tagOpen = true;
-            writingTag = true;
-            tag += HTML[cursorPosition];
-          }
-        }
-        if (!writingTag && tagOpen) {
-          tag.innerHTML += HTML[cursorPosition];
-        }
-        if (!writingTag && !tagOpen) {
-          if (HTML[cursorPosition] === " ") {
-            tempTypeSpeed = 0;
-          }
-          else {
-            tempTypeSpeed = (Math.random() * typeSpeed) + 3;
-          }
-          t.innerHTML += HTML[cursorPosition];
-        }
-        if (writingTag === true && HTML[cursorPosition] === ">") {
-          tempTypeSpeed = (Math.random() * typeSpeed) + 25;
-          writingTag = false;
-          if (tagOpen) {
-            var newSpan = document.createElement("span");
-            t.appendChild(newSpan);
-            newSpan.innerHTML = tag;
-            tag = newSpan.firstChild;
-          }
-        }
-
-        cursorPosition += 1;
-        if (cursorPosition < HTML.length - 1) {
-          setTimeout(type, tempTypeSpeed);
-        }
-
-      };
-
-      return {
-        type: type
-      };
-    }
-
-    var typer = document.getElementById('typewriter');
-
-    typewriter = setupTypewriter(typewriter);
-
-    typewriter.type();
-  </script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>

@@ -10,6 +10,12 @@ body {
   background-color: black;
 }
 
+#my_name {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 5vw;
+  font-weight: 900;
+}
+
 a {
   color: #c5a800;
   text-decoration: none;
@@ -76,11 +82,13 @@ h1, h2, h3, h4, h5, h6 {}
 } */
 
 #typewriter {
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #b9b9b9;
   font-family: 'Source Code Pro', monospace;
   margin: 0;
   overflow: hidden;
+  height: 50vh;
+  max-height: 50vh;
 }
 
 #typewriter::after {
@@ -383,11 +391,6 @@ a.effect-shine:hover {
 }
 
 @media (max-width: 992px) {
-  #typewriter{
-    /* font-size: 0.7em;
-    filter: blur(0px) brightness(1); */
-    display: none;
-  }
   #intro {
     text-align: left;
   }
@@ -399,16 +402,6 @@ a.effect-shine:hover {
     margin-top: 10px;
     font-size: 20px;
     line-height: 24px;
-  }
-}
-
-@media (min-width: 992px){ 
-  
-  #typewriter{
-    display: block;
-  }
-  #txt_intro{
-    display: none;
   }
 }
 
