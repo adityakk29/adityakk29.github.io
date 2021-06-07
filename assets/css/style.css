@@ -11,9 +11,13 @@ body {
 }
 
 #my_name {
+  -webkit-mask-image: linear-gradient(-75deg, #000 25%, rgba(0, 0, 0, .6) 50%, #000 75%);
+  -webkit-mask-size: 200%;
+  animation: shine 3s infinite;
   font-family: 'Quicksand', sans-serif;
-  font-size: 5vw;
+  font-size: 8vw;
   font-weight: 900;
+  color: black;
 }
 
 a {
@@ -493,42 +497,6 @@ section {
 
 .about .content p:last-child {
   margin-bottom: 0;
-}
-
-/*--------------------------------------------------------------
-# Skills
---------------------------------------------------------------*/
-
-.skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
-}
-
-.skills .progress .skill {
-  padding: 10px 0;
-  margin: 0;
-  text-transform: uppercase;
-  display: block;
-  font-weight: 600;
-  color: #c5a800;
-}
-
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-}
-
-.skills .progress-bar-wrap {
-  background: #f2f3f5;
-}
-
-.skills .progress-bar {
-  width: 1px;
-  height: 10px;
-  transition: .9s;
-  background-color: #ceb602;
 }
 
 /*--------------------------------------------------------------
