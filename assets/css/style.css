@@ -414,13 +414,13 @@ a.effect-shine:hover {
 --------------------------------------------------------------*/
 
 section {
-  padding: 60px 0;
+  padding: 30px 0;
   overflow: hidden;
 }
 
 .section-title {
   text-align: center;
-  padding-bottom: 30px;
+  /* padding-bottom: 30px; */
 }
 
 .section-title h2 {
@@ -512,7 +512,7 @@ section {
 }
 
 .resume .resume-item {
-  padding: 0 0 20px 20px;
+  padding: 0 0 5px 20px;
   margin-top: -2px;
   border-left: 2px solid #ceb602;
   position: relative;
@@ -529,11 +529,12 @@ section {
 
 .resume .resume-item h5 {
   font-size: 16px;
-  background: #f7f8f9;
+  background: #545454;
   padding: 5px 15px;
   display: inline-block;
   font-weight: 600;
   margin-bottom: 10px;
+  border-radius: 100px;
 }
 
 .resume .resume-item ul {
@@ -556,7 +557,7 @@ section {
   border-radius: 50px;
   left: -9px;
   top: 0;
-  background: #fff;
+  background: #545454;
   border: 2px solid #ceb602;
 }
 

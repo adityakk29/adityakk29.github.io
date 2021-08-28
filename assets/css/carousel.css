@@ -9,7 +9,8 @@
 
 .content_title .title {
 	font-size: 56px;
-	font-family: 'Dosis', sans-serif;
+	/* font-family: 'Dosis', sans-serif; */
+	font-family: 'Montserrat', sans-serif;
 	color: #000;
 	font-weight: 600;
 	line-height: 60px;
@@ -20,7 +21,8 @@
 .content_title .title small, .content_title .title span, .content_title .title .subtitle {
 	font-size: 20px;
 	line-height: 25px;
-	font-family: 'Dosis', sans-serif;
+	/* font-family: 'Dosis', sans-serif; */
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 	color: #c5a800;
 	display: block;
@@ -36,7 +38,8 @@
 
 .desc {
 	margin: 15px auto 10px;
-	font-family: 'Dosis', sans-serif;
+	/* font-family: 'Dosis', sans-serif; */
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
 	font-size: 18px;
 	color: #fff;
@@ -244,6 +247,11 @@
 	transition: width 0.5s;
 }
 
+.owl-item.active.center:hover img{ 
+	filter: blur(10px); 
+	transition: all 0.7s;
+}
+
 .banner_destacados_wrapper .gallery_wrapper .owl-stage-outer .owl-stage .owl-item.active.center {
 	width: 600px !important;
 }
@@ -259,7 +267,7 @@
 }
 
 .banner_destacados_wrapper .gallery_wrapper .owl-stage-outer .owl-stage .owl-item.active.center .item .content_wrapper .content_title .title {
-	font-size: 38px;
+	font-size: 27px;
 	line-height: 40px;
 }
 
