@@ -185,7 +185,7 @@ $(document).ready(function () {
     dots: true,
     items: 3,
     navText: ['<span></span>', '<span></span>'],
-    autoplay: true
+    autoplay: false
   })
 });
 
