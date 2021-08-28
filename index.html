@@ -30,18 +30,22 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css" />
+  <link href="assets/css/aos.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link href="assets/css/carousel.css" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115740723-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-115740723-1');
@@ -56,7 +60,7 @@
   <!-- ======= Header ======= -->
   <div class="row">
     <!-- <span id="logo">&lt;a_k&gt;</span> -->
-    <span id="logo"  style="width: 3em;"><img src="assets/img/logo.png" class="img-fluid" alt=""></span>
+    <span id="logo" style="width: 3em;"><img src="assets/img/logo.png" class="img-fluid" alt=""></span>
   </div>
   <header id="header" class="d-flex flex-column justify-content-center">
     <nav id="navbar" class="navbar nav-menu">
@@ -169,7 +173,9 @@
             <h3 class="resume-title">Summary</h3>
             <div class="resume-item pb-0">
               <h4>Aditya Kadiwal</h4>
-              <p><em>Driven Data Engineer with 5+ years of experience in designing and executing solutions like Data Lakes, Data Migration, Master Data Management and Machine Learning models for complex business problems.</em></p><br>
+              <p><em>Driven Data Engineer with 5+ years of experience in designing and executing solutions like Data
+                  Lakes, Data Migration, Master Data Management and Machine Learning models for complex business
+                  problems.</em></p><br>
               <ul>
                 <li>Pune, Maharashtra, IN</li>
                 <li>adityakk29@gmail.com</li>
@@ -258,7 +264,8 @@
                       </h4>
                     </div>
                     <div class="desc">
-                      Planning and implementing architecture on AWS and writing PySpark code that perform data extraction, processing and match
+                      Planning and implementing architecture on AWS and writing PySpark code that perform data
+                      extraction, processing and match
                       similar customers based on transformation/business rules.
                     </div>
                   </div>
@@ -273,14 +280,9 @@
                       </h4>
                     </div>
                     <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
+                      Ingestion, cleaning and transforming data from various data sources that is processed in near
+                      real-time, stored as data objects in S3 and loaded into a data warehouse (Redshift)
                     </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
                   </div>
                 </div>
                 <div class="item">
@@ -293,14 +295,9 @@
                       </h4>
                     </div>
                     <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
+                      Performed data engineering on Twitter and Forum data to build Sentiment analysis and Topic
+                      modeling models on AWS Comprehend and AWS Sagemaker
                     </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
                   </div>
                 </div>
                 <div class="item">
@@ -313,14 +310,9 @@
                       </h4>
                     </div>
                     <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
+                      Performed optimization of inference code, quantization of deep learning models and deployment
+                      using AWS Greengrass and IoT Core to monitor driver actions.
                     </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
                   </div>
                 </div>
               </div>
@@ -452,10 +444,12 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <!-- <form action="forms/contact.php" method="post" role="form" class="php-email-form"> -->
+            <form action="https://formcarry.com/s/i30AHC-G4u9" class="php-email-form" method="POST"
+              accept-charset="UTF-8">
               <div class="row">
                 <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  <input type="text" name="firstName" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
@@ -472,6 +466,8 @@
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
+              <div class="g-recaptcha" data-sitekey="6Lejiy0cAAAAADLM2XmbgKKOIU1_JcXYs2d7dZY1"></div>
+              <br />
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
 
@@ -510,15 +506,18 @@
 
   <!-- Template Main JS File -->
   <script src="assets/vendor/jquery.min.js"></script>
+  <script src="assets/vendor/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper-bundle.min.js"></script>
+  <!-- <script src="https://carrier.formcarry.com/js/v1.js"></script> -->
   <script src="assets/js/main.js"></script>
   <link href="assets/css/code_style.css" rel="stylesheet">
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-
 </body>
 
 </html>

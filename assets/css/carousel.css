@@ -41,7 +41,7 @@
 	/* font-family: 'Dosis', sans-serif; */
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 14px;
 	color: #fff;
 	line-height: 40px;
 	letter-spacing: 1.35px;
@@ -186,8 +186,8 @@
 	bottom: 30px;
 	left: 30px;
 	right: 30px;
-	width: 320px;
-	min-width: 320px;
+	width: 360px;
+	min-width: 360px;
 	color: white;
 	overflow: hidden;
 }
@@ -248,7 +248,7 @@
 }
 
 .owl-item.active.center:hover img{ 
-	filter: blur(10px); 
+	filter: blur(7px); 
 	transition: all 0.7s;
 }
 
@@ -267,7 +267,7 @@
 }
 
 .banner_destacados_wrapper .gallery_wrapper .owl-stage-outer .owl-stage .owl-item.active.center .item .content_wrapper .content_title .title {
-	font-size: 27px;
+	font-size: 23px;
 	line-height: 40px;
 }
 
