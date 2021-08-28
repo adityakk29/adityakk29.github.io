@@ -349,7 +349,7 @@ a.effect-shine:hover {
 }
 
 #intro:before {
-  content: "";
+  /* content: ""; */
   background: rgba(0, 0, 0, 0);
   position: absolute;
   bottom: 0;
