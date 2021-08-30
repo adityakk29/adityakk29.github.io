@@ -167,7 +167,7 @@ const paint = (x, y) => {
   const ny = (my - py) / (r.bottom - r.top + 2 * o);
 
   requestAnimationFrame(() => {
-    p.style.textShadow = `${-1 * nx * o}px ${-1 * ny * o}px 0px rgba(197, 168, 0, 1)`;
+    p.style.textShadow = `${-1 * nx * o}px ${-1 * ny * o}px 0px rgba(97, 87, 27, 1)`;
   });
 };
 
@@ -184,7 +184,8 @@ $(document).ready(function () {
     nav: true,
     dots: true,
     items: 5,
-    navText: ['<span></span>', '<span></span>'],
+    smartSpeed: 1000,
+    navText: ['<span>YOYOYOYO</span>', '<span></span>'],
     autoplay: false
   })
 });
