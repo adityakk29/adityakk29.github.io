@@ -183,7 +183,7 @@ $(document).ready(function () {
     center: true,
     nav: true,
     dots: true,
-    items: 3,
+    items: 5,
     navText: ['<span></span>', '<span></span>'],
     autoplay: false
   })
