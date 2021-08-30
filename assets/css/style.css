@@ -302,11 +302,11 @@ a.effect-shine:hover {
 .mobile-nav-toggle {
   position: fixed;
   right: 10px;
-  top: 10px;
+  top: 3vh;
   z-index: 9998;
   border: 0;
   background: none;
-  font-size: 28px;
+  font-size: 3em;
   transition: all 0.4s;
   outline: none !important;
   line-height: 0;
@@ -329,7 +329,7 @@ a.effect-shine:hover {
 
 .mobile-nav-active .mobile-nav-toggle {
   color: #c5a800;
-  background-color: #ceb602;
+  background-color: #fcf2a9;
 }
 
 /*--------------------------------------------------------------
