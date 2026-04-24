@@ -1,547 +1,1315 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aditya Kadiwal</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="description" content="Senior Data Engineer — Python, PySpark, AWS">
+  <meta name="keywords" content="data engineer, python, pyspark, aws, aditya kadiwal">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Fonts: JetBrains Mono + Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Vendor CSS Files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css" />
-  <link href="assets/css/aos.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/css/swiper-bundle.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ──────────────────────────────────────────────
+       CSS CUSTOM PROPERTIES
+    ─────────────────────────────────────────────── */
+    :root {
+      --bg:        #0a0c10;
+      --bg2:       #0f1117;
+      --bg3:       #161b24;
+      --border:    #1e2530;
+      --blue:      #4fa3e0;
+      --blue-dim:  #2d6fa3;
+      --blue-glow: rgba(79,163,224,0.18);
+      --blue-glow2:rgba(79,163,224,0.06);
+      --cyan:      #56d4e8;
+      --green:     #4ecb71;
+      --orange:    #e8a24e;
+      --red:       #e8604e;
+      --muted:     #4a5568;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --text-bright:#e6edf3;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'Syne', sans-serif;
+      --nav-w:     72px;
+      --radius:    8px;
+      --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/carousel.css" rel="stylesheet">
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115740723-1"></script>
-  <script>
+    /* ──────────────────────────────────────────────
+       RESET & BASE
+    ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--mono);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--cyan); }
+
+    img { max-width: 100%; display: block; }
+
+    /* ──────────────────────────────────────────────
+       SCROLLBAR
+    ─────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 3px; }
+
+    /* ──────────────────────────────────────────────
+       LOGO
+    ─────────────────────────────────────────────── */
+    #logo {
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1000;
+      padding: 14px 18px;
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #logo span { color: var(--cyan); }
+
+    /* ──────────────────────────────────────────────
+       HAMBURGER
+    ─────────────────────────────────────────────── */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 12px; right: 16px;
+      z-index: 1001;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 8px 10px;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ──────────────────────────────────────────────
+       SIDEBAR NAV
+    ─────────────────────────────────────────────── */
+    #header {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: var(--nav-w);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px 8px;
+      background: rgba(10,12,16,0.85);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid var(--border);
+    }
+
+    .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+    .nav-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: var(--radius);
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: var(--transition);
+      border: 1px solid transparent;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .nav-menu a i { font-size: 1rem; min-width: 18px; text-align: center; }
+    .nav-menu a .nav-label { display: none; }
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--blue);
+      background: var(--blue-glow2);
+      border-color: var(--blue-dim);
+    }
+
+    /* ──────────────────────────────────────────────
+       MAIN CONTENT OFFSET
+    ─────────────────────────────────────────────── */
+    #main-wrap {
+      margin-left: var(--nav-w);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ──────────────────────────────────────────────
+       INTRO / HERO
+    ─────────────────────────────────────────────── */
+    #intro {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 6vw 60px;
+      position: relative;
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .intro-text .greeting {
+      font-family: var(--mono);
+      font-size: clamp(0.8rem, 1.5vw, 1rem);
+      color: var(--blue);
+      margin-bottom: 12px;
+      letter-spacing: 0.12em;
+    }
+    .greeting::before { content: '> '; opacity: 0.5; }
+
+    #my_name {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: clamp(2.4rem, 7vw, 6rem);
+      line-height: 1.05;
+      color: var(--text-bright);
+      letter-spacing: -0.02em;
+      display: block;
+      transition: text-shadow 0.08s linear;
+      cursor: default;
+      user-select: none;
+    }
+
+    .intro-tagline {
+      font-family: var(--mono);
+      font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+      color: var(--text-dim);
+      margin-top: 16px;
+    }
+    .intro-tagline .tag { color: var(--cyan); }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      background: var(--bg2);
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: var(--blue-glow2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px var(--blue-glow);
+    }
+    .social-links a i { font-size: 0.9rem; }
+
+    /* Terminal window */
+    .terminal-window {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      width: clamp(220px, 28vw, 360px);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .terminal-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-titlebar span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red   { background: #ff5f57; }
+    .dot-yellow{ background: #febc2e; }
+    .dot-green { background: #28c840; }
+    .terminal-title {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+    .terminal-body {
+      padding: 16px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      line-height: 1.8;
+      color: var(--text);
+      min-height: 180px;
+    }
+    .t-prompt { color: var(--blue); }
+    .t-cmd    { color: var(--cyan); }
+    .t-green  { color: var(--green); }
+    .t-orange { color: var(--orange); }
+    .t-dim    { color: var(--muted); }
+    .t-cursor {
+      display: inline-block;
+      width: 8px; height: 14px;
+      background: var(--blue);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ──────────────────────────────────────────────
+       SECTIONS
+    ─────────────────────────────────────────────── */
+    section { padding: 80px 6vw; position: relative; z-index: 1; }
+
+    .section-title {
+      margin-bottom: 48px;
+    }
+    .section-title h2 {
+      font-family: var(--mono);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title h2::before {
+      content: '';
+      width: 30px; height: 2px;
+      background: var(--blue);
+      display: inline-block;
+    }
+    .section-title h2::after {
+      content: '()';
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .section-title p {
+      margin-top: 16px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      max-width: 600px;
+    }
+
+    /* ──────────────────────────────────────────────
+       ABOUT
+    ─────────────────────────────────────────────── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .code-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .code-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+    .code-card-header .dots { display: flex; gap: 6px; }
+    .code-card-header .dots span {
+      width: 11px; height: 11px; border-radius: 50%;
+    }
+    .code-card-filename {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .code-card-body {
+      padding: 20px;
+      font-family: var(--mono);
+      font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+      line-height: 1.9;
+      color: var(--text);
+      overflow-x: auto;
+    }
+    .code-card-body pre { margin: 0; white-space: pre-wrap; word-break: break-word; }
+
+    /* Syntax highlight */
+    .kw    { color: #ff79c6; }  /* keyword */
+    .fn    { color: var(--blue); }  /* function / class */
+    .str   { color: var(--green); }
+    .num   { color: var(--orange); }
+    .cmt   { color: var(--muted); font-style: italic; }
+    .attr  { color: var(--cyan); }
+    .op    { color: #ff79c6; }
+    .link-in-code {
+      color: var(--green);
+      border-bottom: 1px dashed var(--green);
+      transition: var(--transition);
+    }
+    .link-in-code:hover { color: var(--cyan); border-color: var(--cyan); }
+
+    .se-badge {
+      display: inline-block;
+      margin-top: 16px;
+    }
+    .se-badge img { border-radius: 4px; }
+
+    .profile-aside {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-end;
+    }
+    .stat-chip {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .stat-chip strong { color: var(--blue); display: block; font-size: 1.1rem; }
+
+    /* ──────────────────────────────────────────────
+       RESUME
+    ─────────────────────────────────────────────── */
+    #resume { background: var(--bg2); }
+
+    .resume-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .resume-col h3 {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--blue), transparent);
+    }
+
+    .timeline-item {
+      padding-left: 24px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -4px; top: 6px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 8px var(--blue-glow), 0 0 0 3px var(--bg2);
+      transition: box-shadow var(--transition);
+    }
+    .timeline-item:hover::before {
+      box-shadow: 0 0 14px var(--blue), 0 0 0 3px var(--bg2);
+    }
+
+    .timeline-item h4 {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.3;
+    }
+    .timeline-item .period {
+      display: inline-block;
+      margin: 6px 0;
+      padding: 2px 10px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.68rem;
+      color: var(--blue);
+      font-family: var(--mono);
+    }
+    .timeline-item .org {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .timeline-item ul {
+      list-style: none;
+      padding: 0;
+    }
+    .timeline-item ul li {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      padding: 3px 0 3px 14px;
+      position: relative;
+    }
+    .timeline-item ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+    }
+
+    /* ──────────────────────────────────────────────
+       WORK
+    ─────────────────────────────────────────────── */
+    #work { background: var(--bg); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+      gap: 20px;
+    }
+
+    .work-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .work-card:hover {
+      border-color: var(--blue-dim);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 0 1px var(--blue-dim);
+    }
+    .work-card:hover::before { transform: scaleX(1); }
+
+    .work-card .client {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 8px;
+    }
+    .work-card h4 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .work-card p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .work-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .work-card .tag {
+      padding: 2px 8px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.6rem;
+      color: var(--cyan);
+      font-family: var(--mono);
+    }
+
+    /* ──────────────────────────────────────────────
+       CONTACT
+    ─────────────────────────────────────────────── */
+    #contact { background: var(--bg2); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info .info-item {
+      margin-bottom: 24px;
+    }
+    .contact-info .info-item h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .contact-info .info-item p {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      transition: border-color var(--transition);
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px var(--blue-glow);
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: var(--muted); }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid var(--blue);
+      border-radius: var(--radius);
+      color: var(--blue);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.06em;
+    }
+    .btn-primary:hover {
+      background: var(--blue);
+      color: var(--bg);
+      box-shadow: 0 0 20px var(--blue-glow);
+    }
+
+    .form-msg {
+      font-size: 0.78rem;
+      margin-top: 8px;
+      display: none;
+    }
+    .form-msg.success { color: var(--green); display: block; }
+    .form-msg.error   { color: var(--red);   display: block; }
+
+    /* ──────────────────────────────────────────────
+       BACK TO TOP
+    ─────────────────────────────────────────────── */
+    .back-to-top {
+      position: fixed;
+      right: 20px; bottom: 80px;
+      z-index: 990;
+      width: 40px; height: 40px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      font-size: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .back-to-top:hover {
+      background: var(--blue);
+      color: var(--bg);
+      box-shadow: 0 0 16px var(--blue-glow);
+      border-color: var(--blue);
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+
+    /* ──────────────────────────────────────────────
+       COOKIE BANNER
+    ─────────────────────────────────────────────── */
+    #cookie-banner {
+      position: fixed;
+      bottom: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: min(92vw, 520px);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      box-shadow: 0 -4px 32px rgba(0,0,0,0.5);
+      transition: bottom 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      font-size: 0.78rem;
+    }
+    #cookie-banner.show { bottom: 20px; }
+    #cookie-banner p {
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    #cookie-banner strong { color: var(--text-bright); }
+    .cookie-btns { display: flex; gap: 10px; }
+    .cookie-btns button {
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.06em;
+    }
+    #cookie-accept {
+      background: var(--blue);
+      border: 1px solid var(--blue);
+      color: var(--bg);
+    }
+    #cookie-accept:hover { box-shadow: 0 0 14px var(--blue-glow); }
+    #cookie-decline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    #cookie-decline:hover { border-color: var(--muted); color: var(--text); }
+
+    /* ──────────────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────────────── */
+
+    /* Tablet ≤900px */
+    @media (max-width: 900px) {
+      :root { --nav-w: 0px; }
+
+      #header {
+        position: fixed;
+        top: 0; left: -280px; bottom: 0;
+        width: 260px;
+        z-index: 999;
+        flex-direction: column;
+        justify-content: center;
+        background: rgba(10,12,16,0.97);
+        border-right: 1px solid var(--border);
+        padding: 40px 16px;
+        transition: left 0.3s cubic-bezier(0.4,0,0.2,1);
+      }
+      #header.open { left: 0; }
+
+      .nav-menu { gap: 4px; }
+      .nav-menu a { width: 100%; }
+      .nav-menu a .nav-label { display: inline; }
+
+      .hamburger { display: flex; }
+
+      .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.6);
+        z-index: 998;
+      }
+      .nav-overlay.show { display: block; }
+
+      #main-wrap { margin-left: 0; }
+
+      .intro-inner { grid-template-columns: 1fr; }
+      .terminal-window { width: 100%; max-width: 420px; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .profile-aside { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+
+      .resume-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* Mobile ≤640px */
+    @media (max-width: 640px) {
+      section { padding: 60px 5vw; }
+      #intro { padding: 80px 5vw 50px; }
+
+      #my_name { font-size: clamp(2rem, 10vw, 3.2rem); }
+
+      .work-grid { grid-template-columns: 1fr; }
+      .social-links { gap: 8px; }
+      .social-links a { padding: 7px 12px; font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── LOGO ── -->
+<div id="logo"><span>&lt;</span>ak<span>/&gt;</span></div>
+
+<!-- ── HAMBURGER ── -->
+<button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+  <span></span><span></span><span></span>
+</button>
+<div class="nav-overlay" id="nav-overlay"></div>
+
+<!-- ── SIDEBAR NAV ── -->
+<header id="header">
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#intro" class="nav-link active"><i class="fas fa-terminal"></i><span class="nav-label">main()</span></a></li>
+      <li><a href="#about" class="nav-link"><i class="fas fa-user-secret"></i><span class="nav-label">about()</span></a></li>
+      <li><a href="#resume" class="nav-link"><i class="fas fa-project-diagram"></i><span class="nav-label">resume()</span></a></li>
+      <li><a href="#work" class="nav-link"><i class="fas fa-code"></i><span class="nav-label">work()</span></a></li>
+      <li><a href="#contact" class="nav-link"><i class="fas fa-satellite-dish"></i><span class="nav-label">contact()</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ── MAIN WRAP ── -->
+<div id="main-wrap">
+
+  <!-- ══ INTRO ══ -->
+  <section id="intro">
+    <div class="intro-inner">
+      <div class="intro-text">
+        <p class="greeting">hello, world</p>
+        <span id="my_name">ADITYA<br>KADIWAL</span>
+        <p class="intro-tagline">
+          <span class="tag">Senior Data Engineer</span> · Python · PySpark · AWS
+        </p>
+        <div class="social-links">
+          <a href="http://linkedin.com/in/adityakk" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+          <a href="https://stackoverflow.com/users/6573889/aditya" target="_blank"><i class="fab fa-stack-overflow"></i>Stack Overflow</a>
+          <a href="https://github.com/adityakk29" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+          <a href="https://www.kaggle.com/adityakadiwal/" target="_blank"><i class="fab fa-kaggle"></i>Kaggle</a>
+          <a href="https://www.hackerrank.com/profile/adityakk" target="_blank"><i class="fab fa-hackerrank"></i>HackerRank</a>
+        </div>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-titlebar">
+          <span class="dot-red"></span>
+          <span class="dot-yellow"></span>
+          <span class="dot-green"></span>
+          <span class="terminal-title">~ python3</span>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+          <span class="t-prompt">$</span> <span class="t-cmd">python3 dev.py</span><br>
+          <span class="t-dim"># loading developer profile...</span><br><br>
+          <span class="t-green">name</span>    = <span class="t-orange">"Aditya Kadiwal"</span><br>
+          <span class="t-green">role</span>    = <span class="t-orange">"Sr. Data Engineer"</span><br>
+          <span class="t-green">exp</span>     = <span class="t-orange" id="term-exp">"5+ years"</span><br>
+          <span class="t-green">loc</span>     = <span class="t-orange">"Pune, IN"</span><br><br>
+          <span class="t-dim"># awaiting input</span> <span class="t-cursor"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ══ -->
+  <section id="about">
+    <div class="section-title">
+      <h2>about</h2>
+      <p>Senior Data Engineer at Blazeclan Technologies, Pune. I love coding in Python and solving hard data problems.</p>
+    </div>
+
+    <div class="about-grid">
+      <div>
+        <div class="code-card">
+          <div class="code-card-header">
+            <div class="dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="code-card-filename">Senior_Data_Engineer.py</span>
+          </div>
+          <div class="code-card-body">
+<pre><span class="kw">class</span> <span class="fn">DeveloperFound</span>():
+  <span class="kw">def</span> <span class="fn">__init__</span>(self):
+    self.<span class="attr">name</span>     = <span class="str">"Aditya Kadiwal"</span>
+    self.<span class="attr">skills</span>   = [<span class="str">"Python"</span>, <span class="str">"SQL"</span>,
+                     <span class="str">"Pandas"</span>, <span class="str">"PySpark"</span>,
+                     <span class="str">"AWS"</span>, <span class="str">"OpenCV"</span>,
+                     <span class="str">"TensorFlow"</span>]
+    self.<span class="attr">experience</span> = {
+      <span class="str">"years"</span>: <span class="num" id="exp_year">5</span>,
+      <span class="str">"months"</span>: <span class="num" id="exp_mnt">0</span>
+    }
+    self.<span class="attr">role</span>    = <span class="str">"Senior Data Engineer"</span>
+    self.<span class="attr">company</span> = <span class="str">"Blazeclan Technologies"</span>
+    self.<span class="attr">location</span> = {
+      <span class="str">"lat"</span>: <span class="str">"18.5204° N"</span>,
+      <span class="str">"lng"</span>: <span class="str">"73.8567° E"</span>
+    }
+    self.<span class="attr">links</span> = (
+      <a href="http://linkedin.com/in/adityakk" class="str link-in-code" target="_blank">"LinkedIn"</a>,
+      <a href="https://stackoverflow.com/users/6573889/aditya" class="str link-in-code" target="_blank">"StackOverflow"</a>,
+      <a href="https://www.kaggle.com/adityakadiwal/" class="str link-in-code" target="_blank">"Kaggle"</a>,
+      <a href="https://github.com/adityakk29" class="str link-in-code" target="_blank">"GitHub"</a>
+    )
+
+<span class="attr">dev</span> = <span class="fn">DeveloperFound</span>()
+<span class="kw">if</span> hire <span class="op">==</span> <span class="kw">True</span>:
+  dev.send_mail_to(<a href="#contact" class="str link-in-code">"adityakk29@gmail.com"</a>)</pre>
+          </div>
+        </div>
+        <div class="se-badge">
+          <a href="https://stackexchange.com/users/8796009" target="_blank">
+            <img src="https://stackexchange.com/users/flair/8796009.png?theme=dark" width="208" height="58" alt="Stack Exchange profile">
+          </a>
+        </div>
+      </div>
+
+      <div class="profile-aside">
+        <div class="stat-chip"><strong id="stat-exp">5+</strong>years exp.</div>
+        <div class="stat-chip"><strong>AWS</strong>certified</div>
+        <div class="stat-chip"><strong>Pune</strong>India</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RESUME ══ -->
+  <section id="resume">
+    <div class="section-title">
+      <h2>resume</h2>
+    </div>
+
+    <div class="resume-grid">
+      <!-- LEFT: Education -->
+      <div class="resume-col">
+        <h3>// Education</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>PG Program — AI &amp; Machine Learning</h4>
+            <span class="period">2020 – 2021</span>
+            <p class="org">UT Austin × Great Lakes Executive Learning</p>
+          </div>
+          <div class="timeline-item">
+            <h4>BE — Electronics &amp; Telecommunication</h4>
+            <span class="period">2011 – 2015</span>
+            <p class="org">KLS's VDIT, Haliyal (VTU)</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Pre-University — Science (10+2)</h4>
+            <span class="period">2009 – 2011</span>
+            <p class="org">S.N.B.P. Jr. College, Pune</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Experience -->
+      <div class="resume-col">
+        <h3>// Experience</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h4>Senior Data Engineer</h4>
+            <span class="period">Dec 2018 – Present</span>
+            <p class="org">BlazeClan Technologies Pvt. Ltd., Pune</p>
+            <ul>
+              <li>Data Lakes, NLP, IoT, CV &amp; Recommendation engines using Python &amp; PySpark on AWS</li>
+              <li>AWS infrastructure design with security best practices and IAM</li>
+              <li>Built prototypes and POCs presented to client stakeholders</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h4>Analytics Engineer</h4>
+            <span class="period">Jul 2017 – Dec 2018</span>
+            <p class="org">Syvylyze Analytics LLP., Pune</p>
+            <ul>
+              <li>Python ETL scripts for data ingestion, manipulation &amp; cleansing</li>
+              <li>Interactive dashboards using Python, Django, HTML/CSS/JS</li>
+            </ul>
+          </div>
+          <div class="timeline-item">
+            <h4>Software Engineer</h4>
+            <span class="period">Jun 2016 – Jun 2017</span>
+            <p class="org">Wiseco Systems Pvt. Ltd., Pune</p>
+            <ul>
+              <li>Built features for WiseCapture — JavaFX standalone application</li>
+              <li>Built web dashboard replicating the desktop app</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WORK ══ -->
+  <section id="work">
+    <div class="section-title">
+      <h2>work</h2>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <p class="client">Insurance Firm</p>
+        <h4>Customer Master Data Management</h4>
+        <p>Planning and implementing architecture on AWS and writing PySpark code that performs data extraction, processing and customer matching based on transformation/business rules.</p>
+        <div class="tags">
+          <span class="tag">PySpark</span>
+          <span class="tag">AWS</span>
+          <span class="tag">MDM</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <p class="client">Telecom Company</p>
+        <h4>Data Lake</h4>
+        <p>Ingestion, cleaning and transforming data from various sources in near real-time, stored as data objects in S3 and loaded into Redshift data warehouse.</p>
+        <div class="tags">
+          <span class="tag">S3</span>
+          <span class="tag">Redshift</span>
+          <span class="tag">ETL</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <p class="client">Telecom Company</p>
+        <h4>Sentiment Analysis &amp; Topic Modeling</h4>
+        <p>Data engineering on Twitter &amp; forum data to build sentiment analysis and topic modeling models on AWS Comprehend and SageMaker.</p>
+        <div class="tags">
+          <span class="tag">NLP</span>
+          <span class="tag">SageMaker</span>
+          <span class="tag">Comprehend</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <p class="client">Oil &amp; Gas Company</p>
+        <h4>Transport Safety via Computer Vision</h4>
+        <p>Optimized inference code, quantized deep learning models and deployed using AWS Greengrass and IoT Core to monitor driver actions in real time.</p>
+        <div class="tags">
+          <span class="tag">OpenCV</span>
+          <span class="tag">IoT Core</span>
+          <span class="tag">Greengrass</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact">
+    <div class="section-title">
+      <h2>contact</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-item">
+          <h4>Location</h4>
+          <p>Chinchwad, Pune, Maharashtra<br>India – 411033</p>
+        </div>
+        <div class="info-item">
+          <h4>Email</h4>
+          <p><a href="mailto:adityakk29@gmail.com">adityakk29@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div>
+        <form class="contact-form" action="https://formcarry.com/s/i30AHC-G4u9" method="POST" accept-charset="UTF-8" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" name="Name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="Email" placeholder="Your Email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" name="Subject" placeholder="Subject" required>
+          </div>
+          <div class="form-group">
+            <textarea name="Message" placeholder="Message" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <div class="form-msg" id="form-success">✓ Message sent. Thank you!</div>
+          <div class="form-msg" id="form-error">Something went wrong. Please try again.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /#main-wrap -->
+
+<!-- ── BACK TO TOP ── -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-angle-up"></i></button>
+
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner">
+  <p><strong>We use cookies</strong> — only Google Analytics, and only with your consent. No ads, no tracking without permission.</p>
+  <div class="cookie-btns">
+    <button id="cookie-accept">Accept</button>
+    <button id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script>
+/* ──────────────────────────────────────────────
+   EXPERIENCE CALCULATOR
+─────────────────────────────────────────────── */
+(function() {
+  const start = new Date(2016, 4, 31); // May 31, 2016
+  const now   = new Date();
+  let years  = now.getFullYear() - start.getFullYear();
+  let months = now.getMonth() - start.getMonth();
+  if (months < 0) { years--; months += 12; }
+  const expYear = document.getElementById('exp_year');
+  const expMnt  = document.getElementById('exp_mnt');
+  const statExp = document.getElementById('stat-exp');
+  if (expYear) expYear.textContent = years;
+  if (expMnt)  expMnt.textContent  = months;
+  if (statExp) statExp.textContent = years + '+';
+  const termExp = document.getElementById('term-exp');
+  if (termExp) termExp.textContent = '"' + years + ' yrs ' + months + ' mo"';
+})();
+
+/* ──────────────────────────────────────────────
+   MOUSE → BLUE TEXT-SHADOW ON NAME
+─────────────────────────────────────────────── */
+(function() {
+  const el = document.getElementById('my_name');
+  if (!el) return;
+
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const MAX = 14;
+
+  document.addEventListener('mousemove', (e) => {
+    const r = el.getBoundingClientRect();
+    const mx = clamp(e.clientX, r.left - MAX, r.right  + MAX);
+    const my = clamp(e.clientY, r.top  - MAX, r.bottom + MAX);
+    const px = r.left + r.width  / 2;
+    const py = r.top  + r.height / 2;
+    const nx = (mx - px) / (r.width  + 2 * MAX);
+    const ny = (my - py) / (r.height + 2 * MAX);
+    const sx = (-nx * MAX).toFixed(1);
+    const sy = (-ny * MAX).toFixed(1);
+    const blur = (Math.abs(nx * ny) * 12 + 2).toFixed(1);
+
+    requestAnimationFrame(() => {
+      // Layer 1: offset shadow in electric blue
+      // Layer 2: soft diffuse glow behind
+      el.style.textShadow =
+        `${sx}px ${sy}px ${blur}px rgba(79,163,224,0.85),
+         0px 0px 30px rgba(79,163,224,0.12)`;
+    });
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => {
+    el.style.textShadow = '0 0 30px rgba(79,163,224,0.08)';
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   HAMBURGER / NAV
+─────────────────────────────────────────────── */
+const hamburger  = document.getElementById('hamburger');
+const header     = document.getElementById('header');
+const navOverlay = document.getElementById('nav-overlay');
+
+function closeNav() {
+  hamburger.classList.remove('open');
+  header.classList.remove('open');
+  navOverlay.classList.remove('show');
+}
+
+hamburger.addEventListener('click', () => {
+  const open = header.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  navOverlay.classList.toggle('show', open);
+});
+navOverlay.addEventListener('click', closeNav);
+
+/* ──────────────────────────────────────────────
+   ACTIVE NAV ON SCROLL
+─────────────────────────────────────────────── */
+(function() {
+  const links    = document.querySelectorAll('.nav-link');
+  const sections = [...links].map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  const activate = () => {
+    const pos = window.scrollY + window.innerHeight / 3;
+    sections.forEach((sec, i) => {
+      if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
+        links.forEach(l => l.classList.remove('active'));
+        links[i].classList.add('active');
+      }
+    });
+  };
+  window.addEventListener('scroll', activate, { passive: true });
+  activate();
+})();
+
+/* ──────────────────────────────────────────────
+   SMOOTH SCROLL + CLOSE NAV
+─────────────────────────────────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    closeNav();
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+/* ──────────────────────────────────────────────
+   BACK TO TOP
+─────────────────────────────────────────────── */
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 200);
+}, { passive: true });
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ──────────────────────────────────────────────
+   CONTACT FORM (async with Formcarry)
+─────────────────────────────────────────────── */
+const form = document.getElementById('contact-form');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form))
+      });
+      if (res.ok) {
+        document.getElementById('form-success').classList.add('success');
+        form.reset();
+      } else {
+        document.getElementById('form-error').classList.add('error');
+      }
+    } catch {
+      document.getElementById('form-error').classList.add('error');
+    }
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+  });
+}
+
+/* ──────────────────────────────────────────────
+   COOKIE BANNER + DEFERRED GA
+─────────────────────────────────────────────── */
+(function() {
+  const GA_ID    = 'UA-115740723-1';
+  const banner   = document.getElementById('cookie-banner');
+  const consent  = localStorage.getItem('ga_consent');
+
+  function loadGA() {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src   = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
 
-    gtag('config', 'UA-115740723-1');
-  </script>
-</head>
+  if (consent === 'accepted') {
+    loadGA();
+    return;
+  }
+  if (consent === 'declined') return;
 
-<body>
+  // Show banner after short delay
+  setTimeout(() => banner.classList.add('show'), 1200);
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
-  <i class="mobile-nav-toggle d-xl-none">{}</i>
-  <!-- ======= Header ======= -->
-  <div class="row">
-    <!-- <span id="logo">&lt;a_k&gt;</span> -->
-    <span id="logo" style="width: 3em;"><img src="assets/img/logo.png" class="img-fluid" alt=""></span>
-  </div>
-  <header id="header" class="d-flex flex-column justify-content-center">
-    <nav id="navbar" class="navbar nav-menu">
-      <ul>
-        <li><a href="#intro" class="nav-link scrollto active"><i class="fas fa-terminal"></i> <span>main()</span></a>
-        </li>
-        <li><a href="#about" class="nav-link scrollto"><i class="fas fa-user-secret"></i> <span>about()</span></a></li>
-        <li><a href="#resume" class="nav-link scrollto"><i class="fas fa-project-diagram"></i> <span>resume()</span></a>
-        </li>
-        <li><a href="#work" class="nav-link scrollto"><i class="fas fa-code"></i> <span>work()</span></a>
-        </li>
-        <li><a href="#contact" class="nav-link scrollto"><i class="fas fa-satellite-dish"></i>
-            <span>contact()</span></a>
-        </li>
-      </ul>
-    </nav><!-- .nav-menu -->
-
-  </header><!-- End Header -->
-
-  <span><img id="code_chev" src="assets/img/chevron.png" class="img-fluid" alt=""></span>
-  <!-- ======= Intro Section ======= -->
-  <section id="intro" class="d-flex flex-column justify-content-center">
-    <div class="container-fluid">
-      <div id="txt_intro" class="row">
-        <div id="txt_intro_col1" class="col-md-12">
-          <div class="row">
-            <span style="font-size: 3vw;">Hi, my name is</span>
-            <span class='effect-shine' id="my_name">ADITYA KADIWAL</span>
-            <div class="social-links">
-              <a href="http://linkedin.com/in/adityakk" target="_blank" class="linkedin"><i
-                  class="fab fa-linkedin"></i></a>
-              <a href="https://stackoverflow.com/users/6573889/aditya" target="_blank" class="stack-overflow"><i
-                  class="fab fa-stack-overflow"></i></a>
-              <a href="https://github.com/adityakk29" target="_blank" class="github"><i class="fab fa-github"></i></a>
-              <a href="https://www.kaggle.com/adityakadiwal/" target="_blank" class="kaggle"><i
-                  class="fab fa-kaggle"></i></a>
-              <a href="https://www.hackerrank.com/profile/adityakk" target="_blank" class="hackerrank"><i
-                  class="fab fa-hackerrank"></i></a>
-            </div>
-          </div>
-        </div>
-        <!-- <div id="txt_intro_col2" class="col-md-3">
-          <div class="row" style="text-align: end;">
-            <span style="font-size: 3vw;">Skills:</span>
-            <span>Python</span>
-            <span>SQL</span>
-            <span>Pandas</span>
-            <span>PySpark</span>
-            <span>Amazon Web Services</span>
-            <span>OpenCV</span>
-            <span>Tensorflow</span>
-          </div>
-        </div> -->
-      </div>
-
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>about()</h2>
-          <p>
-            I am a Senior Data Engineer at Blazeclan Technologies Pvt. Ltd., Pune. I love coding in Python and solving
-            problems. I love anything that gets the epinephrine flowing in my brain.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Senior_Data_Engineer.py</h3>
-            <div class="row">
-
-              <pre id="typewriter" class="acode prettyprint">
-  class <span class="clsname">DeveloperFound():</span>
-    def __init__(self):  
-      self.name = <span class="atv">"Aditya Kadiwal"</span>
-      self.skills = [<span class="atv">"Python"</span>, <span class="atv">"SQL"</span>, <span class="atv">"Pandas"</span>, 
-                      <span class="atv">"PySpark"</span>, <span class="atv">"Amazon Web Services"</span>,
-                      <span class="atv">"OpenCV"</span>, <span class="atv">"Tensorflow"</span>]
-      self.total_experience = {<span class="atv">"years"</span>: <span id="exp_year" class="atn"></span>, <span class="atv">"months"</span>: <span id="exp_mnt" class="atn"></span>} 
-      self.role = <span class="atv">"Senior Data Engineer"</span>
-      self.company = <span class="atv">"Blazeclan Technologies Pvt. Ltd."</span>
-      self.current_location = {<a href="https://www.google.com/maps/place/Pune,+Maharashtra" class="atv effect-shine" target="_blank">"lat" : "18.5204° N", "long" : "73.8567° E"</a>}
-      self.other_links = (<a href="http://linkedin.com/in/adityakk" class="atv effect-shine" target="_blank">"LinkedIn"</a>, <a href="https://stackoverflow.com/users/6573889/aditya" class="atv effect-shine" target="_blank">"StackOverflow"</a>, <a href="https://www.kaggle.com/adityakadiwal/" class="atv effect-shine" target="_blank">"Kaggle"</a>, 
-                          <a href="https://www.hackerrank.com/profile/adityakk" class="atv effect-shine" target="_blank">"HackerRank"</a>, <a href="https://github.com/adityakk29" class="atv effect-shine" target="_blank">"GitHub"</a>)
-  
-  new_dev = DeveloperFound()
-  if hire == <span class="com">True</span>:
-    new_dev.send_mail_to(<a href="#contact" class="atv effect-shine scrollto" >"adityakk29@gmail.com"</a>) </pre>
-            </div>
-
-            <a href="https://stackexchange.com/users/8796009"><img
-                src="https://stackexchange.com/users/flair/8796009.png?theme=dark" width="208" height="58"
-                alt="Profile for Aditya on Stack Exchange, a network of free, community-driven Q&amp;A sites"
-                title="profile for Aditya on Stack Exchange, a network of free, community-driven Q&amp;A sites"></a>
-
-          </div>
-          <div class="col-lg-4">
-            <img src="assets/img/profile-img.png" class="img-fluid" alt="">
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Resume Section ======= -->
-    <section id="resume" class="resume">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>resume()</h2>
-          <!-- <p>Summary</p> -->
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Summary</h3>
-            <div class="resume-item pb-0">
-              <h4>Aditya Kadiwal</h4>
-              <p><em>Driven Data Engineer with 5+ years of experience in designing and executing solutions like Data
-                  Lakes, Data Migration, Master Data Management and Machine Learning models for complex business
-                  problems.</em></p><br>
-              <ul>
-                <li>Pune, Maharashtra, IN</li>
-                <li>adityakk29@gmail.com</li>
-              </ul>
-            </div>
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Post Graduate Program in Artificial Intelligence &amp; Machine Learning</h4>
-              <h5>2021 - 2020</h5><br><br>
-              <p><em>The University of Texas at Austin - Great Lakes Executive Learning</em></p>
-            </div>
-            <div class="resume-item">
-              <h4>Bachelor of Engineering - <br> Electronics and Telecommunication</h4>
-              <h5>2011 - 2015</h5><br><br>
-              <p><em>KLS's VDIT, Haliyal, Karnataka, IN (Affiliated to Visvesvaraya Technological University)</em></p>
-            </div>
-            <div class="resume-item">
-              <h4>Pre-University Course (10+2) — Science</h4>
-              <h5>2009 - 2011</h5><br><br>
-              <p><em>S.N.B.P. Jr. College, Pune, MH, IN</em></p>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior Data Engineer</h4>
-              <h5>Dec 2018 - Present</h5>
-              <p><em>BlazeClan Technologies Pvt. Ltd., Pune, MH, IN</em></p>
-              <ul>
-                <li>Contributed to a wide variety of projects involving Data Lakes, NLP, IoT,
-                  Computer Vision, Recommendation engines, etc. using Python and PySpark on AWS</li>
-                <li>Design and implement AWS infrastructure setup, provisioning
-                  resource based access to users keeping security best practices in
-                  mind.</li>
-                <li>Build and construct prototypes, proof of concepts and present to
-                  the relevant audience</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Analytics Engineer</h4>
-              <h5>Jul 2017 - Dec 2018</h5>
-              <p><em>Syvylyze Analytics LLP., Pune, MH, IN</em></p>
-              <ul>
-                <li>Writing Python ETL scripts for data ingestion, data manipulation, cleansing and processing.</li>
-                <li>Creating interactive dashboards using Python, Django, HTML,
-                  CSS, JS</li>
-              </ul>
-            </div>
-            <div class="resume-item">
-              <h4>Software Engineer</h4>
-              <h5>Jun 2016 - Jun 2017</h5>
-              <p><em>Wiseco Systems Pvt. Ltd., Pune, MH, IN</em></p>
-              <ul>
-                <li>Adding new features and maintaining WiseCapture which is a
-                  standalone application built using Java and JavaFX.</li>
-                <li>Building a web dashboard replicating the standalone application</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Resume Section -->
-
-    <!-- ======= Work Section ======= -->
-    <section id="work" class="work section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>work()</h2>
-          <!-- <p>Summary</p> -->
-        </div>
-        <div class="row">
-          <!-- https://codepen.io/mdharo/pen/OJWeLKO -->
-          <div class="carousel_wrapper pt-4 mt-4">
-            <div class="container14">
-              <div class="gallery_wrapper owl-carousel">
-                <div class="item">
-                  <img src="assets/img/portfolio/img111.png" class="img-fluid" alt="">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>Insurance Firm</small>
-                        Customer Master Data Management
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Planning and implementing architecture on AWS and writing PySpark code that perform data
-                      extraction, processing and match
-                      similar customers based on transformation/business rules.
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="assets/img/portfolio/img222.png" class="img-fluid" alt="">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>Telecom company</small>
-                        Data Lake
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Ingestion, cleaning and transforming data from various data sources that is processed in near
-                      real-time, stored as data objects in S3 and loaded into a data warehouse (Redshift)
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="assets/img/portfolio/img333.png" class="img-fluid" alt="">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>Telecom company</small>
-                        Sentiment Analysis and Topic Modeling
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Performed data engineering on Twitter and Forum data to build Sentiment analysis and Topic
-                      modeling models on AWS Comprehend and AWS Sagemaker
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="assets/img/portfolio/img444.png" class="img-fluid" alt="">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>Oil and gas company</small>
-                        Transport Safety using Computer Vision
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Performed optimization of inference code, quantization of deep learning models and deployment
-                      using AWS Greengrass and IoT Core to monitor driver actions.
-                    </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="assets/img/portfolio/img444.png" class="img-fluid" alt="">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>Oil and gas company</small>
-                        Transport Safety using Computer Vision
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Performed optimization of inference code, quantization of deep learning models and deployment
-                      using AWS Greengrass and IoT Core to monitor driver actions.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--<div class="row">
-          <!8-- https://codepen.io/mdharo/pen/OJWeLKO -8->
-          <div class="carousel_wrapper pt-4 mt-4">
-            <div class="container14">
-              <div class="gallery_wrapper owl-carousel">
-                <div class="item">
-                  <img src="https://cdn.pixabay.com/photo/2020/07/14/13/38/puffin-5404178__340.jpg">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>voluptas corporis</small>
-                        Lorem ipsum dolor
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
-                    </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="https://cdn.pixabay.com/photo/2015/03/26/09/54/pug-690566__340.jpg">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>voluptas corporis</small>
-                        Lorem ipsum dolor
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
-                    </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313__340.jpg">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>voluptas corporis</small>
-                        Lorem ipsum dolor
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
-                    </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
-                  </div>
-                </div>
-                <div class="item">
-                  <img src="https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262__340.jpg">
-                  <div class="content_wrapper">
-                    <div class="content_title">
-                      <h4 class="title">
-                        <small>voluptas corporis</small>
-                        Lorem ipsum dolor
-                      </h4>
-                    </div>
-                    <div class="desc">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat iste beatae cum nemo.
-                    </div>
-                  </div>
-                  <div class="links_wrapper">
-                    <a href="http://www.migueldeharo.com" class="btn_primary has_icon">
-                      <i class="far fa-dizzy"></i>
-                      wow!
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>-->
-    </section><!-- End Work Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>contact()</h2>
-        </div>
-
-        <div class="row mt-1">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <h4>Location:</h4>
-                <p>Chinchwad, Pune, Maharashtra, India - 411033</p>
-              </div>
-
-              <div class="email">
-                <h4>Email:</h4>
-                <p>adityakk29@gmail.com</p>
-              </div>
-
-              <!-- <div class="phone">
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div> -->
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="https://formcarry.com/s/i30AHC-G4u9" class="php-email-form" method="POST"
-              accept-charset="UTF-8">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="Name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="Email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="Subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="Message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="g-recaptcha" data-sitekey="6Lejiy0cAAAAADLM2XmbgKKOIU1_JcXYs2d7dZY1"></div>
-              <br />
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <!-- <footer id="footer">
-    <div class="container">
-      <h3>Brandon Johnson</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>MyResume</span></strong>. All Rights Reserved
-      </div>
-    </div>
-  </footer> -->
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <!-- <div id="preloader"></div> -->
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="fas fa-angle-double-up"></i></a>
-
-
-  <!-- Template Main JS File -->
-  <script src="assets/vendor/jquery.min.js"></script>
-  <script src="assets/vendor/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper-bundle.min.js"></script>
-  <!-- <script src="https://carrier.formcarry.com/js/v1.js"></script> -->
-  <script src="assets/js/main.js"></script>
-  <link href="assets/css/code_style.css" rel="stylesheet">
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('ga_consent', 'accepted');
+    banner.classList.remove('show');
+    loadGA();
+  });
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    localStorage.setItem('ga_consent', 'declined');
+    banner.classList.remove('show');
+  });
+})();
+</script>
 </body>
-
 </html>
