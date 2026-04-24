@@ -1276,39 +1276,62 @@ if (form) {
    COOKIE BANNER + DEFERRED GA
 ─────────────────────────────────────────────── */
 (function() {
-  const GA_ID    = 'G-Z883VYXX27';
-  const banner   = document.getElementById('cookie-banner');
-  const consent  = localStorage.getItem('ga_consent');
+  const GA_ID = 'G-Z883VYXX27';
+  const banner = document.getElementById('cookie-banner');
+  const consent = localStorage.getItem('ga_consent');
+
+  // Always define dataLayer + gtag globally
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(){ dataLayer.push(arguments); };
+
+  // Default consent (important)
+  gtag('consent', 'default', {
+    analytics_storage: 'denied'
+  });
 
   function loadGA() {
     const s = document.createElement('script');
     s.async = true;
-    s.src   = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
     gtag('js', new Date());
-    gtag('config', GA_ID);
+
+    gtag('config', GA_ID, {
+      debug_mode: true // optional for testing
+    });
   }
 
   if (consent === 'accepted') {
+    gtag('consent', 'update', {
+      analytics_storage: 'granted'
+    });
     loadGA();
     return;
   }
+
   if (consent === 'declined') return;
 
-  // Show banner after short delay
-  setTimeout(() => banner.classList.add('show'), 1200);
+  setTimeout(() => {
+    if (banner) banner.classList.add('show');
+  }, 1200);
 
-  document.getElementById('cookie-accept').addEventListener('click', () => {
+  document.getElementById('cookie-accept')?.addEventListener('click', () => {
     localStorage.setItem('ga_consent', 'accepted');
-    banner.classList.remove('show');
+
+    gtag('consent', 'update', {
+      analytics_storage: 'granted'
+    });
+
+    banner?.classList.remove('show');
     loadGA();
   });
-  document.getElementById('cookie-decline').addEventListener('click', () => {
+
+  document.getElementById('cookie-decline')?.addEventListener('click', () => {
     localStorage.setItem('ga_consent', 'declined');
-    banner.classList.remove('show');
+    banner?.classList.remove('show');
   });
+
 })();
 </script>
 </body>
