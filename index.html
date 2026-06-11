@@ -1151,17 +1151,84 @@
    EXPERIENCE CALCULATOR
 ─────────────────────────────────────────────── */
 (function() {
-  const start = new Date(2016, 4, 31); // May 31, 2016
-  const now   = new Date();
-  let years  = now.getFullYear() - start.getFullYear();
+  // Define work experiences with start/end dates
+  // Format: "YYYY/MM" (end date can be "present" for current role)
+  const experiences = [
+    { start: "2025/11", end: "present", title: "Technical Lead" },
+    { start: "2023/02", end: "2025/10", title: "Advanced Data Engineer" },
+    { start: "2021/10", end: "2022/10", title: "ML Data Engineer" },
+    { start: "2018/12", end: "2021/10", title: "Senior Data Engineer" },
+    { start: "2017/07", end: "2018/12", title: "Analytics Engineer" },
+    { start: "2016/06", end: "2017/06", title: "Software Engineer" }
+  ];
+
+  // Helper function to calculate years and months between two dates
+  function calculateDuration(startStr, endStr) {
+    const parseDate = (dateStr) => {
+      const [year, month] = dateStr.split('/').map(Number);
+      return new Date(year, month - 1, 1);
+    };
+
+    const startDate = parseDate(startStr);
+    const endDate = endStr === "present" ? new Date() : parseDate(endStr);
+
+    let years = endDate.getFullYear() - startDate.getFullYear();
+    let months = endDate.getMonth() - startDate.getMonth();
+    
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    return { years, months };
+  }
+
+  // Helper function to format date from "YYYY/MM" to "MMM YYYY"
+  function formatDate(dateStr) {
+    const [year, month] = dateStr.split('/').map(Number);
+    const date = new Date(year, month - 1);
+    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  // Helper function to generate period text (e.g., "Feb 2023 – Oct 2025")
+  function generatePeriodText(start, end) {
+    const startFormatted = formatDate(start);
+    const endFormatted = end === "present" ? "Present" : formatDate(end);
+    return `${startFormatted} – ${endFormatted}`;
+  }
+
+  // Update all experience periods in the timeline
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  timelineItems.forEach((item, index) => {
+    if (index < experiences.length) {
+      const exp = experiences[index];
+      const periodEl = item.querySelector('.period');
+      const duration = calculateDuration(exp.start, exp.end);
+      
+      // Update period text
+      if (periodEl) {
+        periodEl.textContent = generatePeriodText(exp.start, exp.end);
+      }
+      
+      // Optional: Add duration info as data attribute for future use
+      item.dataset.duration = `${duration.years}y ${duration.months}m`;
+    }
+  });
+
+  // Calculate total experience for About section
+  const start = new Date(2016, 5, 1); // Jun 1, 2016
+  const now = new Date();
+  let years = now.getFullYear() - start.getFullYear();
   let months = now.getMonth() - start.getMonth();
   if (months < 0) { years--; months += 12; }
+
   const expYear = document.getElementById('exp_year');
-  const expMnt  = document.getElementById('exp_mnt');
+  const expMnt = document.getElementById('exp_mnt');
   const statExp = document.getElementById('stat-exp');
   if (expYear) expYear.textContent = years;
-  if (expMnt)  expMnt.textContent  = months;
+  if (expMnt) expMnt.textContent = months;
   if (statExp) statExp.textContent = years + '+';
+
   const termExp = document.getElementById('term-exp');
   if (termExp) termExp.textContent = '"' + years + ' yrs ' + months + ' mo"';
 })();
